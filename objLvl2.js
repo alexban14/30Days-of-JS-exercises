@@ -76,3 +76,59 @@ function countUsers() {
 	// });
 	return count;
 }
+
+// 3)Find people who are MERN stack developer from the users object
+
+// 4)Set your name in the users object without modifying the original users object
+
+function setName() {
+	const copyUsers = Object.assign(users, {
+		Alex: {
+			email: 'paul@paul.com',
+			skills: ['HTML', 'CSS', 'JavaScript', 'MongoDB', 'Express', 'React', 'Node'],
+			age: 20,
+			isLoggedIn: false,
+			points: 40
+		}
+	});
+	return copyUsers;
+}
+
+// 4) Get all keys or properties of users object
+
+function getKeys() {
+	const userskeys = Object.keys(users);
+	return userskeys;
+}
+
+// 5) Get all the values of users object
+
+function getValues() {
+	const userVal = Object.values(users);
+	return userVal;
+}
+
+// LVL 3
+
+// 1) Create an object literal called personAccount.
+const personAccount = {
+	firstName: 'Ban',
+	lastName: 'Alex',
+	incomes: {
+		salary: 2000,	
+		stocks: 500,
+		crypto: 500,
+		rents: 500,
+	},
+	expenses: {
+		kids: 400,
+		fuel: 300,
+		clothes: 300,
+		food: 1000,
+		rate: 500
+	},
+
+	totalIncome() {
+		return `Total income: ${this.incomes.crypto + this.incomes.salary + this.incomes.stocks + this.incomes.rents}$`;
+	}
+}
