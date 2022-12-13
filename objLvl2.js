@@ -179,18 +179,23 @@ const userz = [
 
 // 2) a. Create a function called signUp which allows user to add to the collection. If user exists, inform the user that he has already an account.
 
-const signUp = (userName) => {
-	n = 0
-	while(n < userz.length) {
-		n++;
-		if(userz[n] !== userName) {
-			return userz.push({ username: userName })
-		} else {
-			return 'You are already in the database!'
-		}
+const singUp = (userName) => {
+	if(userz.find(object => object.username === userName)) {
+		return 'You are already in the database!'
 	}
+	return userz.push({ username: userName});
 }
 
+// 2) b. Create a function called signIn which allows user to sign in to the application
+
+const signIn = (userName, id) => {
+	if(userz.find(object => object.username === userName) && userz.find(object => object._id === id)) {
+		return 'Welcom back, logged in!'
+	}
+	return 'Username or id not found!'
+}
+
+// 3)
     const products = [
   {
     _id: 'eedfcf',
@@ -220,3 +225,16 @@ const signUp = (userName) => {
     likes: ['fg12cy']
   }
 ];
+
+// 3) a. Create a function called rateProduct which rates the product 
+const rating = {  }
+const rateProduct = (product, rating) => {
+	function findProd() {
+		products.find(object => object.name === product)
+	}
+	let index = products.findIndex(findProd);
+	if(!index) {
+		return 'We could not get find the product!'
+	}
+	return products[index].ratings.push(rating);
+} 
