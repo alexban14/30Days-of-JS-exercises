@@ -227,14 +227,35 @@ const signIn = (userName, id) => {
 ];
 
 // 3) a. Create a function called rateProduct which rates the product 
-const rating = {  }
+const rating = {  userId: 'alex', rating: 1 };
 const rateProduct = (product, rating) => {
-	function findProd() {
-		products.find(object => object.name === product)
-	}
-	let index = products.findIndex(findProd);
-	if(!index) {
+	let index = products.indexOf(products.find(object => object.name === product));
+	if(!products[index]) {
 		return 'We could not get find the product!'
 	}
-	return products[index].ratings.push(rating);
+	products[index].ratings.push(rating);
+	return products[index];
 } 
+
+// 3) b. Create a function called averageRating which calculate the average rating of a product
+const averageRating = (product) =>{
+	let ratingSum = 0;
+	let count = 0;
+	let index = products.indexOf(products.find(object => object.name === product));
+	
+	if(!products[index]) {
+		return 'We could not get find the product!'
+	}
+	for(let i = 0; i < products[index].ratings.length; i++) {
+		count ++;
+		ratingSum += products[index].ratings[i].rate;
+	}
+
+	if (count < 1) {
+		return 'This product has no ratings';
+	} else if (count > 0) {
+		return ratingSum;
+	}
+	let average = ratingSum / count;
+	return average;
+}
