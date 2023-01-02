@@ -235,7 +235,7 @@ const rateProduct = (product, rating) => {
 	}
 	products[index].ratings.push(rating);
 	return products[index];
-} 
+};
 
 // 3) b. Create a function called averageRating which calculate the average rating of a product
 const averageRating = (product) =>{
@@ -244,7 +244,7 @@ const averageRating = (product) =>{
 	let index = products.indexOf(products.find(object => object.name === product));
 	
 	if(!products[index]) {
-		return 'We could not get find the product!'
+		return 'We could not find the product!'
 	}
 	for(let i = 0; i < products[index].ratings.length; i++) {
 		count ++;
@@ -258,4 +258,19 @@ const averageRating = (product) =>{
 	}
 	let average = ratingSum / count;
 	return average;
-}
+};
+
+// 4) Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
+
+const likeProduct = (userId, product) => {
+	let prodIndex = products.indexOf(products.find(object => object.name === product));
+	let likesArray = products[prodIndex].likes
+	if(likesArray.includes(userId)) {
+		let likeIndex = likesArray.indexOf(userId);
+		likesArray.splice(likeIndex, 1)
+		return `You unliked the product: ${product}`;
+	} else {
+		likesArray.push(userId);
+		return `You liked the product: ${product}`;
+	}
+};
